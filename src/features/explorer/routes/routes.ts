@@ -12,5 +12,6 @@ export default [
     {
         path: '/files/:id',
         Component: ExplorerPage,
+        handle: {isEditingFile: true}
     },
 ]
