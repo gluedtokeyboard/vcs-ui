@@ -8,3 +8,8 @@ export async function getFile(fileId: string): Promise<File> {
     // @ts-ignore
     return await api.get<File>(`${FILE_ENDPOINT}/${fileId}`)
 }
+
+export async function updateFile({ id, contents }: { id: string, contents: string }): Promise<File> {
+    // @ts-ignore
+    return await api.patch<File>(`${FILE_ENDPOINT}/${id}`, { contents })
+}
