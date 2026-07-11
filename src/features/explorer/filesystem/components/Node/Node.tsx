@@ -34,7 +34,9 @@ export default function Node({ id, type, name, thumbnail: { src, alt }, href }: 
 
     function handleDoubleClick() {
         clearSelection()
-        return navigate(href, {})
+        return navigate(href, {
+            state: { openedFromExplorer: true }
+        })
     }
 
     return (
