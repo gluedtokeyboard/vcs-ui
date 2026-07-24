@@ -4,6 +4,7 @@ import useIsEditingFile from '../../filesystem/hooks/useIsEditingFile.ts'
 import FileEditor from '../../filesystem/components/FileEditor/FileEditor.tsx'
 import { useLocation, useNavigate } from 'react-router'
 import { useFilesystemStore } from '../../filesystem/stores/filesystemStore.ts'
+import FilesystemToolbar from '../../filesystem/components/FilesystemToolbar/FilesystemToolbar.tsx'
 
 export default function ExplorerPage() {
     const isEditingFile = useIsEditingFile()
@@ -26,6 +27,7 @@ export default function ExplorerPage() {
     }
 
     return <main className={ styles.explorerPage }>
+        <FilesystemToolbar />
         <Explorer />
         { isEditingFile && <FileEditor onClose={ navigateToCWD } onSubmit={ navigateToCWD } /> }
     </main>
