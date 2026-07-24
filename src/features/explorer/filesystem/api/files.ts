@@ -1,4 +1,5 @@
 import type { File } from '../types/file.types.ts'
+import { type Node, NodeType } from '../types/directory.types.ts'
 import { FILESYSTEM_API_BASE_URL } from '../config/api.ts'
 import api from '../../../../shared/lib/api.ts'
 
@@ -12,4 +13,16 @@ export async function getFile(fileId: string): Promise<File> {
 export async function updateFile({ id, contents }: { id: string, contents: string }): Promise<File> {
     // @ts-ignore
     return await api.patch<File>(`${FILE_ENDPOINT}/${id}`, { contents })
+}
+
+export async function createFile(file: { path: string; contents?: string }): Promise<Node> {
+    if (!file.contents) {
+        file.contents = ''
+    }
+    // @ts-ignore
+    const fileResponse = await api.post<File>(FILE_ENDPOINT, file) as File
+    return {
+        ...fileResponse,
+        type: NodeType.FILE,
+    }
 }
