@@ -1,0 +1,28 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    padding: 0.5rem;
+    cursor: pointer;
+    background: transparent;
+    transition: background .15s ease;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.disabled {
+    composes: button;
+    opacity: 0.2;
+    cursor: inherit;
+}
+
+.button:not(.disabled):hover {
+    background: #cecece;
+}
+
+.button:not(.disabled):active {
+    background: #bbb;
+}
