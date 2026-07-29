@@ -26,3 +26,7 @@ export async function createFile(file: { path: string; contents?: string }): Pro
         type: NodeType.FILE,
     }
 }
+
+export async function deleteFile(id: string): Promise<void> {
+    await api.delete<void>(`${FILE_ENDPOINT}/${id}`)
+}
