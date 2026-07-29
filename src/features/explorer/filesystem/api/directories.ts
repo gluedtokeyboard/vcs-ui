@@ -22,3 +22,7 @@ export async function createDirectory(directory: { path: string }): Promise<Node
         type: NodeType.DIRECTORY,
     }
 }
+
+export async function deleteDirectory(id: string): Promise<void> {
+    await api.delete<void>(`${DIRECTORY_ENDPOINT}/${id}`)
+}
