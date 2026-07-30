@@ -30,3 +30,7 @@ export async function createFile(file: { path: string; contents?: string }): Pro
 export async function deleteFile(id: string): Promise<void> {
     await api.delete<void>(`${FILE_ENDPOINT}/${id}`)
 }
+
+export async function updateFilePath(file: { id: string, path: string }): Promise<File> {
+    return await api.patch<File>(`${FILE_ENDPOINT}/${file.id}`, file) as unknown as File
+}
