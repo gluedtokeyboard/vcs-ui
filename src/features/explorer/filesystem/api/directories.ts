@@ -26,3 +26,7 @@ export async function createDirectory(directory: { path: string }): Promise<Node
 export async function deleteDirectory(id: string): Promise<void> {
     await api.delete<void>(`${DIRECTORY_ENDPOINT}/${id}`)
 }
+
+export async function updateDirectoryPath(directory: { id: string, path: string }): Promise<Directory> {
+    return await api.patch<Directory>(`${DIRECTORY_ENDPOINT}/${directory.id}`, directory) as unknown as Directory
+}
