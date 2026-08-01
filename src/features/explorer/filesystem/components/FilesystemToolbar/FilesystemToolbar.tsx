@@ -5,12 +5,14 @@ import Spacer from '../../../components/Spacer/Spacer.tsx'
 import Delete from '../Delete/Delete.tsx'
 import Rename from '../Rename/Rename.tsx'
 import Cut from '../Cut/Cut.tsx'
+import Cancel from '../Cancel/Cancel.tsx'
 
 export default function FilesystemToolbar() {
     return <Toolbar>
         <NewFolder />
         <NewFile />
         <Spacer />
+        <Cancel />
         <Cut />
         <Rename />
         <Delete />
