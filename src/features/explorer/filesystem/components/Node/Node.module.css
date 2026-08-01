@@ -24,6 +24,11 @@
     flex: 1;
 }
 
+.iconCut {
+    composes: icon;
+    opacity: 0.6;
+}
+
 .name {
     padding: 0.5rem;
     text-align: center;
