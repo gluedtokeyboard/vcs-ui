@@ -6,6 +6,7 @@ import Delete from '../Delete/Delete.tsx'
 import Rename from '../Rename/Rename.tsx'
 import Cut from '../Cut/Cut.tsx'
 import Cancel from '../Cancel/Cancel.tsx'
+import Copy from '../Copy/Copy.tsx'
 
 export default function FilesystemToolbar() {
     return <Toolbar>
@@ -14,6 +15,7 @@ export default function FilesystemToolbar() {
         <Spacer />
         <Cancel />
         <Cut />
+        <Copy />
         <Rename />
         <Delete />
     </Toolbar>
