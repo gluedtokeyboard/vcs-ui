@@ -34,3 +34,14 @@ export async function deleteFile(id: string): Promise<void> {
 export async function updateFilePath(file: { id: string, path: string }): Promise<File> {
     return await api.patch<File>(`${FILE_ENDPOINT}/${file.id}`, file) as unknown as File
 }
+
+export async function copyFile({ sourceId, destination }: { sourceId: string, destination: string }): Promise<Node> {
+    const fileResponse = await api.post<File>(FILE_ENDPOINT, {
+        copyFrom: sourceId,
+        path: destination,
+    }) as unknown as File
+    return {
+        ...fileResponse,
+        type: NodeType.FILE,
+    }
+}
