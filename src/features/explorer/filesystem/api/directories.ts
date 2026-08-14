@@ -30,3 +30,15 @@ export async function deleteDirectory(id: string): Promise<void> {
 export async function updateDirectoryPath(directory: { id: string, path: string }): Promise<Directory> {
     return await api.patch<Directory>(`${DIRECTORY_ENDPOINT}/${directory.id}`, directory) as unknown as Directory
 }
+
+export async function copyDirectory(
+        { sourceId, destination }: { sourceId: string, destination: string}): Promise<Node> {
+    const directoryResponse = await api.post<Directory>(DIRECTORY_ENDPOINT, {
+        copyFrom: sourceId,
+        path: destination,
+    }) as unknown as Directory
+    return {
+        ...directoryResponse,
+        type: NodeType.DIRECTORY,
+    }
+}
