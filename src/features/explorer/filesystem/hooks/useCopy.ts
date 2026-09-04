@@ -4,7 +4,7 @@ import { getBasename, joinPath } from '../../../../shared/lib/utils.ts'
 import { useClipboardStore } from '../stores/clipboardStore.ts'
 import { copyDirectory } from '../api/directories.ts'
 import { copyFile } from '../api/files.ts'
-import useDeferredValue from '../../hooks/useDeferredValue.ts'
+import useDeferredValue from '../../../../shared/hooks/useDeferredValue.ts'
 import queryClient from '../../../../app/queryClient.ts'
 
 export default function useCopy() {

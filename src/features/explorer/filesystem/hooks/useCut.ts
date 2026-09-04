@@ -6,7 +6,7 @@ import { getBasename, joinPath } from '../../../../shared/lib/utils.ts'
 import { useClipboardStore } from '../stores/clipboardStore.ts'
 import { updateDirectoryPath } from '../api/directories.ts'
 import { updateFilePath } from '../api/files.ts'
-import useDeferredValue from '../../hooks/useDeferredValue.ts'
+import useDeferredValue from '../../../../shared/hooks/useDeferredValue.ts'
 
 export default function useCut() {
     const keys = {
