@@ -1,5 +1,5 @@
 import Button_, { type ButtonProps as ButtonProps_ } from '../Button/Button.tsx'
-import useDialog, { type DialogProps, type DialogPropsWithOptionalOnClose } from '../../../../../shared/hooks/useDialog.tsx'
+import useDialog, { type DialogProps, type DialogPropsWithOptionalOnClose } from '../../../hooks/useDialog.tsx'
 import * as React from 'react'
 
 type ButtonProps = Omit<ButtonProps_, 'onClick'> & { onClick?: () => void }

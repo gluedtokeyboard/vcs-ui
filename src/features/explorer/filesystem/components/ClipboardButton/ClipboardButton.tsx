@@ -1,4 +1,4 @@
-import Button from '../../../components/buttons/Button/Button.tsx'
+import Button from '../../../../../shared/components/buttons/Button/Button.tsx'
 import useNodeIsSelected from '../../hooks/useNodeIsSelected.ts'
 import { useFilesystemStore } from '../../stores/filesystemStore.ts'
 import { type Node } from '../../types/directory.types.ts'

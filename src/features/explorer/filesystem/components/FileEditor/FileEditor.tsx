@@ -1,11 +1,11 @@
 import styles from './FileEditor.module.css'
-import FormDialog from '../../../components/dialogs/FormDialog/FormDialog.tsx'
+import FormDialog from '../../../../../shared/components/dialogs/FormDialog/FormDialog.tsx'
 import { useParams } from 'react-router'
 import { useFile } from '../../hooks/useFile.ts'
 import { getBasename } from '../../../../../shared/lib/utils.ts'
 import { useForm } from 'react-hook-form'
 import useUpdateFile from '../../hooks/useUpdateFile.ts'
-import MessageDialog from '../../../components/dialogs/MessageDialog/MessageDialog.tsx'
+import MessageDialog from '../../../../../shared/components/dialogs/MessageDialog/MessageDialog.tsx'
 
 type FileEditorProps = {
     onClose: () => void,

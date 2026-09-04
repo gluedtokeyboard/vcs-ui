@@ -3,7 +3,7 @@ import { useFilesystemStore } from '../../stores/filesystemStore.ts'
 import type { NodeType } from '../../types/directory.types.ts'
 import useNodeIsSelected from '../../hooks/useNodeIsSelected.ts'
 import useRenameNode from '../../hooks/useRenameNode.ts'
-import SingleInputDialogButton from '../../../components/buttons/SingleInputDialogButton/SingleInputDialogButton.tsx'
+import SingleInputDialogButton from '../../../../../shared/components/buttons/SingleInputDialogButton/SingleInputDialogButton.tsx'
 
 export default function Rename() {
     const nodeIsSelected = useNodeIsSelected()

@@ -1,5 +1,5 @@
 import icon from './delete.svg'
-import Button from '../../../components/buttons/Button/Button.tsx'
+import Button from '../../../../../shared/components/buttons/Button/Button.tsx'
 import { useFilesystemStore } from '../../stores/filesystemStore.ts'
 import useDeleteNode from '../../hooks/useDeleteNode.ts'
 import type { NodeType } from '../../types/directory.types.ts'

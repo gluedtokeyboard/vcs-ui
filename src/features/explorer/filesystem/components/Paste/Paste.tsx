@@ -1,5 +1,5 @@
 import icon from './paste.svg'
-import Button from '../../../components/buttons/Button/Button.tsx'
+import Button from '../../../../../shared/components/buttons/Button/Button.tsx'
 import useHasClipboardContent from '../../hooks/useHasClipboardContent.ts'
 import useCut from '../../hooks/useCut.ts'
 import { ClipboardOperationType } from '../../types/clipboard.types.ts'

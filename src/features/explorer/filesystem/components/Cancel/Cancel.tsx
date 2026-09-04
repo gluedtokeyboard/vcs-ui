@@ -1,5 +1,5 @@
 import icon from './cancel.svg'
-import Button from '../../../components/buttons/Button/Button.tsx'
+import Button from '../../../../../shared/components/buttons/Button/Button.tsx'
 import useHasClipboardContent from '../../hooks/useHasClipboardContent.ts'
 import { useClipboardStore } from '../../stores/clipboardStore.ts'
 
