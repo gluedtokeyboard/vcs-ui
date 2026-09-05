@@ -1,5 +1,5 @@
-import useOptimisticDelete from './useOptimisticDelete.ts'
-import useOptimisticAdd from './useOptimisticAdd.ts'
+import useOptimisticDelete from '../../../../shared/hooks/useOptimisticDelete.ts'
+import useOptimisticAdd from '../../../../shared/hooks/useOptimisticAdd.ts'
 import { type Directory, type Node, NodeType } from '../types/directory.types.ts'
 import { directoryKeys, fileKeys } from '../queries/keys.ts'
 import { getBasename, joinPath } from '../../../../shared/lib/utils.ts'

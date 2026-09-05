@@ -1,4 +1,4 @@
-import useOptimisticAdd from './useOptimisticAdd.ts'
+import useOptimisticAdd from '../../../../shared/hooks/useOptimisticAdd.ts'
 import { fileKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
 import { createFile } from '../api/files.ts'

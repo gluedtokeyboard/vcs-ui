@@ -1,5 +1,5 @@
 import { createDirectory } from '../api/directories.ts'
-import useOptimisticAdd from './useOptimisticAdd.ts'
+import useOptimisticAdd from '../../../../shared/hooks/useOptimisticAdd.ts'
 import { directoryKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
 

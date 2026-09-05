@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import queryClient from '../../../../app/queryClient.ts'
+import queryClient from '../../app/queryClient.ts'
 
 type WithId<T extends object = object> = T & { id: string }
 type QueryAllData<R, K extends string | undefined = undefined> = K extends string ? Record<K, R[]> : R[]

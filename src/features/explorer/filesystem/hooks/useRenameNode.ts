@@ -3,7 +3,7 @@ import { updateDirectoryPath } from '../api/directories.ts'
 import { updateFilePath } from '../api/files.ts'
 import { directoryKeys, fileKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
-import useOptimisticUpdate from './useOptimisticUpdate.ts'
+import useOptimisticUpdate from '../../../../shared/hooks/useOptimisticUpdate.ts'
 import { joinToCwd } from '../utils.ts'
 
 export default function useRenameNode() {

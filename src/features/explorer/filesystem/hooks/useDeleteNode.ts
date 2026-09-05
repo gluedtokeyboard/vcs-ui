@@ -1,4 +1,4 @@
-import useOptimisticDelete from './useOptimisticDelete.ts'
+import useOptimisticDelete from '../../../../shared/hooks/useOptimisticDelete.ts'
 import { NodeType } from '../types/directory.types.ts'
 import { deleteDirectory } from '../api/directories.ts'
 import { deleteFile } from '../api/files.ts'

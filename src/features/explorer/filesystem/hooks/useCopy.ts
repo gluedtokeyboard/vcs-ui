@@ -1,4 +1,4 @@
-import useOptimisticAdd from './useOptimisticAdd.ts'
+import useOptimisticAdd from '../../../../shared/hooks/useOptimisticAdd.ts'
 import { type Directory, type Node, NodeType } from '../types/directory.types.ts'
 import { getBasename, joinPath } from '../../../../shared/lib/utils.ts'
 import { useClipboardStore } from '../stores/clipboardStore.ts'
