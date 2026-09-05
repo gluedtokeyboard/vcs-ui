@@ -1,10 +1,10 @@
 import styles from './ExplorerPage.module.css'
-import Explorer from '../../filesystem/components/Explorer/Explorer.tsx'
-import useIsEditingFile from '../../filesystem/hooks/useIsEditingFile.ts'
-import FileEditor from '../../filesystem/components/FileEditor/FileEditor.tsx'
+import Explorer from '../../../filesystem/components/Explorer/Explorer.tsx'
+import useIsEditingFile from '../../../filesystem/hooks/useIsEditingFile.ts'
+import FileEditor from '../../../filesystem/components/FileEditor/FileEditor.tsx'
 import { useLocation, useNavigate } from 'react-router'
-import { useFilesystemStore } from '../../filesystem/stores/filesystemStore.ts'
-import FilesystemToolbar from '../../filesystem/components/FilesystemToolbar/FilesystemToolbar.tsx'
+import { useFilesystemStore } from '../../../filesystem/stores/filesystemStore.ts'
+import FilesystemToolbar from '../../../filesystem/components/FilesystemToolbar/FilesystemToolbar.tsx'
 
 export default function ExplorerPage() {
     const isEditingFile = useIsEditingFile()
