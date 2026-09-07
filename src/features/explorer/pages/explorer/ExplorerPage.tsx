@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router'
 import { useFilesystemStore } from '../../../filesystem/stores/filesystemStore.ts'
 import FilesystemToolbar from '../../../filesystem/components/FilesystemToolbar/FilesystemToolbar.tsx'
 import StatusBar from '../../components/StatusBar/StatusBar.tsx'
+import VcsToolbar from '../../../vcs/components/VcsToolbar/VcsToolbar.tsx'
 
 export default function ExplorerPage() {
     const isEditingFile = useIsEditingFile()
@@ -29,6 +30,7 @@ export default function ExplorerPage() {
 
     return <main className={ styles.explorerPage }>
         <FilesystemToolbar />
+        <VcsToolbar />
         <Explorer />
         <StatusBar />
         { isEditingFile && <FileEditor onClose={ navigateToCWD } onSubmit={ navigateToCWD } /> }
