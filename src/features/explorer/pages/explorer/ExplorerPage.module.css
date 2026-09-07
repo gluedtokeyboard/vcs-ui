@@ -1,5 +1,5 @@
 .explorerPage {
     display: grid;
     height: 100dvh;
-    grid-template-rows: min-content minmax(0, 1fr);
+    grid-template-rows: min-content minmax(0, 1fr) min-content;
 }

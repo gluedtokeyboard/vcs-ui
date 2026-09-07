@@ -1,0 +1,11 @@
+.statusBar {
+    --padding-vertical: 1rem;
+    --padding-horizontal: 0.75rem;
+    --font-size: 0.95rem;
+    box-sizing: border-box;
+    background-color: #e0e0e0;
+    padding: var(--padding-vertical) var(--padding-horizontal);
+    font-size: var(--font-size);
+    min-height: calc(var(--padding-vertical)*2 + var(--font-size));
+    font-weight: bold;
+}
