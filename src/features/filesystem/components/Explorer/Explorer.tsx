@@ -9,6 +9,8 @@ import * as React from 'react'
 import File from '../File/File.tsx'
 import { getBasename } from '../../../../shared/lib/utils.ts'
 import useIsEditingFile from '../../hooks/useIsEditingFile.ts'
+import { eventBus } from '../../../../app/events'
+import { FilesystemEvent } from '../../events/eventTypes.ts'
 
 export default function Explorer() {
     const { id } = useParams()
@@ -42,6 +44,7 @@ export default function Explorer() {
     }
     if (data) {
         setCurrentWorkingDirectory(data.id)
+        eventBus.emit(FilesystemEvent.DIRECTORY_CHANGED, data)
         const nodes = getNodeComponents(data.contents)
         if (nodes.length > 0) {
             contents = nodes
