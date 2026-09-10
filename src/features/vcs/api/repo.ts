@@ -8,3 +8,8 @@ export async function init(repo: { repoRootId: string }): Promise<Repo> {
     // @ts-ignore
     return await api.post<Repo>(REPO_ENDPOINT, repo)
 }
+
+export async function resolveRepo({ directoryId }: { directoryId: string }): Promise<Repo> {
+    // @ts-expect-error
+    return await api.get<Repo>(`${REPO_ENDPOINT}?directoryId=${directoryId}`)
+}
