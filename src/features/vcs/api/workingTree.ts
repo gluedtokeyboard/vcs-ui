@@ -11,3 +11,12 @@ export async function reset({ repoId, commitPrefix }: { repoId: string, commitPr
         commitPrefix,
     })
 }
+
+export async function checkoutFile(
+        { repoId, commitPrefix, path }: { repoId: string, commitPrefix?: string, path: string }): Promise<void> {
+    // @ts-expect-error
+    return api.patch<void>(workingTreeEndpoint(repoId), {
+        commitPrefix,
+        path,
+    })
+}
