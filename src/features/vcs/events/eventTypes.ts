@@ -8,6 +8,7 @@ export const VcsEvent = {
     STAGING_RM: 'staging:rm',
     COMMIT: 'commit',
     RESET: 'reset',
+    CHECKOUT_FILE: 'checkout:file',
 } as const
 
 export type VcsEvents = {
@@ -16,4 +17,5 @@ export type VcsEvents = {
     [VcsEvent.STAGING_RM]: StagingEntry,
     [VcsEvent.COMMIT]: Commit,
     [VcsEvent.RESET]: void,
+    [VcsEvent.CHECKOUT_FILE]: void,
 }
