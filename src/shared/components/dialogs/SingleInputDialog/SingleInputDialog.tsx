@@ -1,5 +1,5 @@
 import FormDialog from '../FormDialog/FormDialog.tsx'
-import styles from './SingleInputDialog.module.css'
+import styles from '../../../styles/Form.module.css'
 import { type RegisterOptions, useForm } from 'react-hook-form'
 
 type SingleInputDialogProps = {
