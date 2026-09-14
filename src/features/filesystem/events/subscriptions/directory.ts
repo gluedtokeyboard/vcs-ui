@@ -7,6 +7,7 @@ import type { AppEvents } from '../../../../app/events/AppEvents.ts'
 const invalidateCwdEvents = [
     VcsEvent.REPO_INIT,
     VcsEvent.STAGING_RM,
+    VcsEvent.RESET,
 ] as const
 
 type Payload = AppEvents[typeof invalidateCwdEvents[number]]
