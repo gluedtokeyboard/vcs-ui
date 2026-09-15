@@ -1,0 +1,35 @@
+.sidebar {
+    display: flex;
+    min-height: 0;
+}
+
+.sidebarContent {
+    --box-shadow-color: #aaa;
+    --box-shadow-offset: 2px;
+    --box-shadow-blur-radius: 10px;
+    background-color: #eaeaea;
+    padding: 1rem;
+    box-shadow:
+        var(--box-shadow-color) var(--box-shadow-offset) var(--box-shadow-offset) var(--box-shadow-blur-radius) inset,
+        var(--box-shadow-color) calc(-1 * var(--box-shadow-offset)) calc(-1 * var(--box-shadow-offset))
+            var(--box-shadow-blur-radius) inset;
+    flex: 1;
+    display: flex;
+}
+
+.sidebarPanelWrapper {
+    flex: 1;
+    overflow: scroll;
+    scrollbar-width: none;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow-color) var(--box-shadow-offset) var(--box-shadow-offset) var(--box-shadow-blur-radius);
+}
+
+.sidebarButtonRail {
+    width: 3.75rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 1rem;
+}
