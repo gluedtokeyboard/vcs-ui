@@ -7,6 +7,7 @@ import { useFilesystemStore } from '../../../filesystem/stores/filesystemStore.t
 import FilesystemToolbar from '../../../filesystem/components/FilesystemToolbar/FilesystemToolbar.tsx'
 import StatusBar from '../../components/StatusBar/StatusBar.tsx'
 import VcsToolbar from '../../../vcs/components/VcsToolbar/VcsToolbar.tsx'
+import VcsSidebar from '../../../vcs/components/VcsSidebar/VcsSidebar.tsx'
 
 export default function ExplorerPage() {
     const isEditingFile = useIsEditingFile()
@@ -37,6 +38,9 @@ export default function ExplorerPage() {
         </div>
         <div className={styles.explorer}>
             <Explorer />
+        </div>
+        <div className={styles.vcsSidebar}>
+            <VcsSidebar />
         </div>
         <div className={styles.statusBar}>
             <StatusBar />
