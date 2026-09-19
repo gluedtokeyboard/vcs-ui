@@ -29,10 +29,18 @@ export default function ExplorerPage() {
     }
 
     return <main className={ styles.explorerPage }>
-        <FilesystemToolbar />
-        <VcsToolbar />
-        <Explorer />
-        <StatusBar />
+        <div className={styles.fsToolbar}>
+            <FilesystemToolbar />
+        </div>
+        <div className={styles.vcsToolbar}>
+            <VcsToolbar />
+        </div>
+        <div className={styles.explorer}>
+            <Explorer />
+        </div>
+        <div className={styles.statusBar}>
+            <StatusBar />
+        </div>
         { isEditingFile && <FileEditor onClose={ navigateToCWD } onSubmit={ navigateToCWD } /> }
     </main>
 }
