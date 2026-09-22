@@ -2,6 +2,7 @@ import Toolbar from '../../../../shared/components/Toolbar/Toolbar.tsx'
 import ThemeProvider from '../../../../shared/providers/ThemeProvider.tsx'
 import Init from '../Init/Init.tsx'
 import Add from '../Add/Add.tsx'
+import Rm from '../Rm/Rm.tsx'
 
 export default function VcsToolbar() {
     const theme = {
@@ -14,6 +15,7 @@ export default function VcsToolbar() {
         <Toolbar>
             <Init />
             <Add />
+            <Rm />
         </Toolbar>
     </ThemeProvider>
 }
