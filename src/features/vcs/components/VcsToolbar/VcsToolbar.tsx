@@ -4,6 +4,7 @@ import Init from '../Init/Init.tsx'
 import Add from '../Add/Add.tsx'
 import Rm from '../Rm/Rm.tsx'
 import Commit from '../Commit/Commit.tsx'
+import Reset from '../Reset/Reset.tsx'
 
 export default function VcsToolbar() {
     const theme = {
@@ -18,6 +19,7 @@ export default function VcsToolbar() {
             <Add />
             <Rm />
             <Commit />
+            <Reset />
         </Toolbar>
     </ThemeProvider>
 }
