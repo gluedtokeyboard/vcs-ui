@@ -7,7 +7,8 @@
     font-weight: bold;
     padding: 0.5rem;
     cursor: pointer;
-    background: transparent;
+    color: var(--color);
+    background-color: var(--background-color);
     transition: background .15s ease;
     flex-wrap: wrap;
     justify-content: center;
@@ -20,9 +21,9 @@
 }
 
 .button:not(.disabled):hover {
-    background: #cecece;
+    background: var(--hover-background);
 }
 
 .button:not(.disabled):active {
-    background: #bbb;
+    background: var(--active-background);
 }
