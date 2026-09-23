@@ -1,1 +1,2 @@
 import './repo'
+import './log'
