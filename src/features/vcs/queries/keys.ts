@@ -3,3 +3,7 @@ export const repoKeys = {
     detail: (id: string) => [...repoKeys.all, id] as const,
     current: () => [...repoKeys.all, 'current'] as const,
 }
+
+export const logKeys = {
+    detail: (repoId: string) => [...repoKeys.detail(repoId), 'log'] as const,
+}
