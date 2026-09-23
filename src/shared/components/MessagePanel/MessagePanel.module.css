@@ -1,0 +1,7 @@
+.messagePanel {
+    display: grid;
+    height: 100%;
+    place-content: center;
+    color: #aaa;
+    text-align: center;
+}
