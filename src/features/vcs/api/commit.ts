@@ -13,3 +13,8 @@ export async function commit({ repoId, message }: { repoId: string, message: str
         message,
     })
 }
+
+export async function log({ repoId }: { repoId: string }): Promise<Commit[]> {
+    // @ts-expect-error
+    return api.get<Commit[]>(commitEndpoint(repoId))
+}
