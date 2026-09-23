@@ -1,5 +1,6 @@
 import Sidebar from '../../../../shared/components/Sidebar/Sidebar.tsx'
 import ThemeProvider from '../../../../shared/providers/ThemeProvider.tsx'
+import LogButton from '../Log/LogButton/LogButton.tsx'
 
 export default function VcsSidebar() {
     const theme = {
@@ -8,6 +9,7 @@ export default function VcsSidebar() {
     }
     return <ThemeProvider value={theme}>
         <Sidebar>
+            <LogButton />
         </Sidebar>
     </ThemeProvider>
 }
