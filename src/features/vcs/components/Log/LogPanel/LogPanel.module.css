@@ -1,0 +1,16 @@
+.logEntry {
+    gap: 0.4rem;
+}
+
+.commitMessage {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.hash {
+    font-size: 0.8rem;
+}
+
+.timestamp {
+    font-size: 0.85rem;
+}
