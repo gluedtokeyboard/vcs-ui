@@ -1,0 +1,12 @@
+.section {
+    gap: 0.15rem;
+}
+
+.file {
+    font-size: 0.85rem;
+}
+
+.noFiles {
+    color: gray;
+    font-size: 0.8rem;
+}
