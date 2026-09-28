@@ -14,12 +14,11 @@ export default function useCopy() {
     }
     const destinationKey = useDeferredValue<readonly string[]>()
     const promiseRef = useDeferredValue<Promise<any>>()
-    const addFn = useOptimisticAdd(
-        promiseRef.get,
-        undefined,
-        destinationKey.get,
-        'contents'
-    )
+    const addFn = useOptimisticAdd({
+        addFn: promiseRef.get,
+        queryKeyAllFn: destinationKey.get,
+        allDataAttribute: 'contents'
+    })
 
     function copy(source: Node, destinationDirectoryPath: string, destinationDirectoryQueryKey: readonly string[]) {
         const clipboardContentType = (useClipboardStore.getState().clipboardNode as Node).type

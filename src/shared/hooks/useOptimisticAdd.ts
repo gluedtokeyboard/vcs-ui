@@ -3,17 +3,26 @@ import queryClient from '../../app/queryClient.ts'
 
 type WithId<T extends object> = T & { id: string }
 type QueryAllData<R, K extends string | undefined = undefined> = K extends string ? Record<K, R[]> : R[]
+type UseOptimisticAddArgs<
+        T extends object,
+        R extends WithId<T>,
+        K extends string | undefined = undefined> = {
+    addFn: (item: T) => Promise<R>,
+    queryKeyDetailFn?: (id: string) => readonly string[],
+    queryKeyAllFn?: () => readonly string[],
+    allDataAttribute?: K,
+}
 
 export default function useOptimisticAdd<
         T extends object,
         R extends WithId<T>,
         K extends string | undefined = undefined,
-        Q extends QueryAllData<R, K> = QueryAllData<R, K>>(
-            addFn: (item: T) => Promise<R>,
-            queryKeyDetailFn?: (id: string) => readonly string[],
-            queryKeyAllFn?: () => readonly string[],
-            allDataAttribute?: K
-): (item: T) => void {
+        Q extends QueryAllData<R, K> = QueryAllData<R, K>>({
+            addFn,
+            queryKeyDetailFn,
+            queryKeyAllFn,
+            allDataAttribute,
+}: UseOptimisticAddArgs<T, R, K>): (item: T) => void {
     return useMutation({
         mutationFn: addFn,
 

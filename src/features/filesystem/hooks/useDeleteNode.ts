@@ -6,12 +6,21 @@ import { directoryKeys, fileKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
 
 export default function useDeleteNode() {
-    const queryKeyAllFn = getCwdQueryKey
-    const allDataAttribute = 'contents'
+    const optimisticDeleteFunctionCommonArgs = {
+        queryKeyAllFn: getCwdQueryKey,
+        allDataAttribute: 'contents',
+    }
     const optimisticDeleteFunctions = {
-        [NodeType.DIRECTORY]: useOptimisticDelete(
-            deleteDirectory, directoryKeys.detail, queryKeyAllFn, allDataAttribute),
-        [NodeType.FILE]: useOptimisticDelete(deleteFile, fileKeys.detail, queryKeyAllFn, allDataAttribute),
+        [NodeType.DIRECTORY]: useOptimisticDelete({
+            deleteFn: deleteDirectory,
+            queryKeyDetailFn: directoryKeys.detail,
+            ...optimisticDeleteFunctionCommonArgs,
+        }),
+        [NodeType.FILE]: useOptimisticDelete({
+            deleteFn: deleteFile,
+            queryKeyDetailFn: fileKeys.detail,
+            ...optimisticDeleteFunctionCommonArgs,
+        }),
     }
 
     function deleteNode(nodeId: string, nodeType: NodeType) {

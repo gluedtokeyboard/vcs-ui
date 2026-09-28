@@ -7,12 +7,21 @@ import useOptimisticUpdate from '../../../shared/hooks/useOptimisticUpdate.ts'
 import { joinToCwd } from '../utils.ts'
 
 export default function useRenameNode() {
-    const queryKeyAllFn = getCwdQueryKey
-    const allDataAttribute = 'contents'
+    const optimisticUpdateFunctionCommonArgs = {
+        queryKeyAllFn: getCwdQueryKey,
+        allDataAttribute: 'contents',
+    }
     const optimisticUpdateFunctions = {
-        [NodeType.DIRECTORY]: useOptimisticUpdate(
-            updateDirectoryPath, directoryKeys.detail, queryKeyAllFn, allDataAttribute),
-        [NodeType.FILE]: useOptimisticUpdate(updateFilePath, fileKeys.detail, queryKeyAllFn, allDataAttribute),
+        [NodeType.DIRECTORY]: useOptimisticUpdate({
+            updateFn: updateDirectoryPath,
+            queryKeyDetailFn: directoryKeys.detail,
+            ...optimisticUpdateFunctionCommonArgs,
+        }),
+        [NodeType.FILE]: useOptimisticUpdate({
+            updateFn: updateFilePath,
+            queryKeyDetailFn: fileKeys.detail,
+            ...optimisticUpdateFunctionCommonArgs,
+        }),
     }
 
     function renameNode(nodeId: string, nodeType: NodeType, relativePath: string) {

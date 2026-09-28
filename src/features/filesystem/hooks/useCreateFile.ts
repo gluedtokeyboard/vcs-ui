@@ -4,5 +4,10 @@ import { getCwdQueryKey } from '../queries/helpers.ts'
 import { createFile } from '../api/files.ts'
 
 export default function useCreateFile() {
-    return useOptimisticAdd(createFile, fileKeys.detail, getCwdQueryKey, 'contents')
+    return useOptimisticAdd({
+        addFn: createFile,
+        queryKeyDetailFn: fileKeys.detail,
+        queryKeyAllFn: getCwdQueryKey,
+        allDataAttribute: 'contents',
+    })
 }

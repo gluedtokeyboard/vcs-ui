@@ -3,15 +3,21 @@ import queryClient from '../../app/queryClient.ts'
 
 type WithId<T extends object = object> = T & { id: string }
 type QueryAllData<R, K extends string | undefined = undefined> = K extends string ? Record<K, R[]> : R[]
+type UseOptimisticDeleteArgs<K extends string | undefined = undefined> = {
+    deleteFn: (id: string) => Promise<void>,
+    queryKeyDetailFn: (id: string) => readonly string[],
+    queryKeyAllFn: () => readonly string[],
+    allDataAttribute?: K,
+}
 
 export default function useOptimisticDelete<
         K extends string | undefined = undefined,
-        Q extends QueryAllData<WithId, K> = QueryAllData<WithId, K>>(
-            deleteFn: (id: string) => Promise<void>,
-            queryKeyDetailFn: (id: string) => readonly string[],
-            queryKeyAllFn: () => readonly string[],
-            allDataAttribute?: K
-): (id: string) => void {
+        Q extends QueryAllData<WithId, K> = QueryAllData<WithId, K>>({
+            deleteFn,
+            queryKeyDetailFn,
+            queryKeyAllFn,
+            allDataAttribute,
+}: UseOptimisticDeleteArgs<K>): (id: string) => void {
     return useMutation({
         mutationFn: deleteFn,
 

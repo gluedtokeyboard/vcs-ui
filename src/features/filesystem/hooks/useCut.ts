@@ -22,18 +22,17 @@ export default function useCut() {
     const destinationDirectoryKey = useDeferredValue<readonly string[]>()
     const promiseRef = useDeferredValue<Promise<any>>()
     const allDataAttribute = 'contents'
-    const deleteFn = useOptimisticDelete(
-        promiseRef.get,
-        detailKey.get,
-        sourceKey.get,
+    const deleteFn = useOptimisticDelete({
+        deleteFn: promiseRef.get,
+        queryKeyDetailFn: detailKey.get,
+        queryKeyAllFn: sourceKey.get,
         allDataAttribute,
-    )
-    const addFn = useOptimisticAdd(
-        promiseRef.get,
-        undefined,
-        destinationDirectoryKey.get,
+    })
+    const addFn = useOptimisticAdd({
+        addFn: promiseRef.get,
+        queryKeyAllFn: destinationDirectoryKey.get,
         allDataAttribute,
-    )
+    })
 
     function cut(source: Node, destinationDirectoryPath: string, destinationDirectoryQueryKey: readonly string[]) {
         const clipboardContentType = (useClipboardStore.getState().clipboardNode as Node).type
