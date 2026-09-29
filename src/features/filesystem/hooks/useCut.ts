@@ -7,6 +7,7 @@ import { useClipboardStore } from '../stores/clipboardStore.ts'
 import { updateDirectoryPath } from '../api/directories.ts'
 import { updateFilePath } from '../api/files.ts'
 import useDeferredValue from '../../../shared/hooks/useDeferredValue.ts'
+import { FilesystemEvent } from '../events/eventTypes.ts'
 
 export default function useCut() {
     const keys = {
@@ -28,11 +29,21 @@ export default function useCut() {
         queryKeyAllFn: sourceKey.get,
         allDataAttribute,
     })
-    const addFn = useOptimisticAdd({
+    const addFnCommonArgs = {
         addFn: promiseRef.get,
         queryKeyAllFn: destinationDirectoryKey.get,
         allDataAttribute,
-    })
+    }
+    const addFns = {
+        [NodeType.DIRECTORY]: useOptimisticAdd({
+            ...addFnCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.DIRECTORY_CUT,
+        }),
+        [NodeType.FILE]: useOptimisticAdd({
+            ...addFnCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.FILE_CUT,
+        }),
+    }
 
     function cut(source: Node, destinationDirectoryPath: string, destinationDirectoryQueryKey: readonly string[]) {
         const clipboardContentType = (useClipboardStore.getState().clipboardNode as Node).type
@@ -49,7 +60,7 @@ export default function useCut() {
         const promise = updatePathFn[clipboardContentType](updatedItem)
         promiseRef.set(promise)
         deleteFn(source.id)
-        addFn(updatedItem)
+        addFns[clipboardContentType](updatedItem)
     }
 
     return cut

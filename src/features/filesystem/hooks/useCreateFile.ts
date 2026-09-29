@@ -2,6 +2,7 @@ import useOptimisticAdd from '../../../shared/hooks/useOptimisticAdd.ts'
 import { fileKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
 import { createFile } from '../api/files.ts'
+import { FilesystemEvent } from '../events/eventTypes.ts'
 
 export default function useCreateFile() {
     return useOptimisticAdd({
@@ -9,5 +10,6 @@ export default function useCreateFile() {
         queryKeyDetailFn: fileKeys.detail,
         queryKeyAllFn: getCwdQueryKey,
         allDataAttribute: 'contents',
+        emitEventOnSuccess: FilesystemEvent.FILE_CREATED,
     })
 }

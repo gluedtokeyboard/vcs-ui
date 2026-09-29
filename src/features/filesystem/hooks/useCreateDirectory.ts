@@ -2,6 +2,7 @@ import { createDirectory } from '../api/directories.ts'
 import useOptimisticAdd from '../../../shared/hooks/useOptimisticAdd.ts'
 import { directoryKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
+import { FilesystemEvent } from '../events/eventTypes.ts'
 
 export default function useCreateDirectory() {
     return useOptimisticAdd({
@@ -9,5 +10,6 @@ export default function useCreateDirectory() {
         queryKeyDetailFn: directoryKeys.detail,
         queryKeyAllFn: getCwdQueryKey,
         allDataAttribute: 'contents',
+        emitEventOnSuccess: FilesystemEvent.DIRECTORY_CREATED,
     })
 }

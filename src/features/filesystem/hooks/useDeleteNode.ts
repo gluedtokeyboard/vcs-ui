@@ -4,6 +4,7 @@ import { deleteDirectory } from '../api/directories.ts'
 import { deleteFile } from '../api/files.ts'
 import { directoryKeys, fileKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
+import { FilesystemEvent } from '../events/eventTypes.ts'
 
 export default function useDeleteNode() {
     const optimisticDeleteFunctionCommonArgs = {
@@ -15,11 +16,13 @@ export default function useDeleteNode() {
             deleteFn: deleteDirectory,
             queryKeyDetailFn: directoryKeys.detail,
             ...optimisticDeleteFunctionCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.DIRECTORY_DELETED,
         }),
         [NodeType.FILE]: useOptimisticDelete({
             deleteFn: deleteFile,
             queryKeyDetailFn: fileKeys.detail,
             ...optimisticDeleteFunctionCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.FILE_DELETED,
         }),
     }
 

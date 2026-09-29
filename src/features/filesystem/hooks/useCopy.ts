@@ -6,6 +6,7 @@ import { copyDirectory } from '../api/directories.ts'
 import { copyFile } from '../api/files.ts'
 import useDeferredValue from '../../../shared/hooks/useDeferredValue.ts'
 import queryClient from '../../../app/queryClient.ts'
+import { FilesystemEvent } from '../events/eventTypes.ts'
 
 export default function useCopy() {
     const copyFn = {
@@ -14,11 +15,21 @@ export default function useCopy() {
     }
     const destinationKey = useDeferredValue<readonly string[]>()
     const promiseRef = useDeferredValue<Promise<any>>()
-    const addFn = useOptimisticAdd({
+    const addFnCommonArgs = {
         addFn: promiseRef.get,
         queryKeyAllFn: destinationKey.get,
         allDataAttribute: 'contents'
-    })
+    }
+    const addFns = {
+        [NodeType.DIRECTORY]: useOptimisticAdd({
+            ...addFnCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.DIRECTORY_COPIED,
+        }),
+        [NodeType.FILE]: useOptimisticAdd({
+            ...addFnCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.FILE_COPIED,
+        }),
+    }
 
     function copy(source: Node, destinationDirectoryPath: string, destinationDirectoryQueryKey: readonly string[]) {
         const clipboardContentType = (useClipboardStore.getState().clipboardNode as Node).type
@@ -46,7 +57,7 @@ export default function useCopy() {
             path: newPath,
             type: clipboardContentType,
         }
-        addFn(newNode)
+        addFns[clipboardContentType](newNode)
     }
 
     return copy

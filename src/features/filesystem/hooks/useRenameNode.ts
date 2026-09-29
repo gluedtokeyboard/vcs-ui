@@ -5,6 +5,7 @@ import { directoryKeys, fileKeys } from '../queries/keys.ts'
 import { getCwdQueryKey } from '../queries/helpers.ts'
 import useOptimisticUpdate from '../../../shared/hooks/useOptimisticUpdate.ts'
 import { joinToCwd } from '../utils.ts'
+import { FilesystemEvent } from '../events/eventTypes.ts'
 
 export default function useRenameNode() {
     const optimisticUpdateFunctionCommonArgs = {
@@ -16,11 +17,13 @@ export default function useRenameNode() {
             updateFn: updateDirectoryPath,
             queryKeyDetailFn: directoryKeys.detail,
             ...optimisticUpdateFunctionCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.DIRECTORY_RENAMED,
         }),
         [NodeType.FILE]: useOptimisticUpdate({
             updateFn: updateFilePath,
             queryKeyDetailFn: fileKeys.detail,
             ...optimisticUpdateFunctionCommonArgs,
+            emitEventOnSuccess: FilesystemEvent.FILE_RENAMED,
         }),
     }
 
