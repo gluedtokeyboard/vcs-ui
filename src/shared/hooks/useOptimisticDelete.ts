@@ -1,5 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import queryClient from '../../app/queryClient.ts'
+import type { EventWithPayload } from '../types/event.types.ts'
+import { eventBus } from '../../app/events'
 
 type WithId<T extends object = object> = T & { id: string }
 type QueryAllData<R, K extends string | undefined = undefined> = K extends string ? Record<K, R[]> : R[]
@@ -8,6 +10,7 @@ type UseOptimisticDeleteArgs<K extends string | undefined = undefined> = {
     queryKeyDetailFn: (id: string) => readonly string[],
     queryKeyAllFn: () => readonly string[],
     allDataAttribute?: K,
+    emitEventOnSuccess?: EventWithPayload<void>,
 }
 
 export default function useOptimisticDelete<
@@ -17,6 +20,7 @@ export default function useOptimisticDelete<
             queryKeyDetailFn,
             queryKeyAllFn,
             allDataAttribute,
+            emitEventOnSuccess,
 }: UseOptimisticDeleteArgs<K>): (id: string) => void {
     return useMutation({
         mutationFn: deleteFn,
@@ -49,6 +53,12 @@ export default function useOptimisticDelete<
             return {
                 previousItem,
                 previousItems,
+            }
+        },
+
+        onSuccess() {
+            if (emitEventOnSuccess) {
+                eventBus.emit(emitEventOnSuccess, undefined)
             }
         },
 

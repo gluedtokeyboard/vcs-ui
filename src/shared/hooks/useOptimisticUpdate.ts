@@ -1,28 +1,34 @@
 import { useMutation } from '@tanstack/react-query'
 import queryClient from '../../app/queryClient.ts'
+import { eventBus } from '../../app/events'
+import type { AppEvents } from '../../app/events/AppEvents.ts'
 
 type WithId<T extends object> = T & { id: string }
 type QueryAllData<R, K extends string | undefined = undefined> = K extends string ? Record<K, R[]> : R[]
 type UseOptimisticUpdateArgs<
         T extends object,
         R extends WithId<T>,
+        E extends keyof AppEvents | undefined = undefined,
         K extends string | undefined = undefined> = {
-    updateFn: (arg: WithId<T>) => Promise<R>,
+    updateFn: (arg: WithId<T>) => Promise<E extends keyof AppEvents ? AppEvents[E] & R : R>,
     queryKeyDetailFn: (id: string) => readonly string[],
     queryKeyAllFn?: () => readonly string[],
     allDataAttribute?: K,
+    emitEventOnSuccess?: E,
 }
 
 export default function useOptimisticUpdate<
         T extends object,
         R extends WithId<T>,
+        E extends keyof AppEvents | undefined = undefined,
         K extends string | undefined = undefined,
         Q extends QueryAllData<R, K> = QueryAllData<R, K>>({
             updateFn,
             queryKeyDetailFn,
             queryKeyAllFn,
             allDataAttribute,
-}: UseOptimisticUpdateArgs<T, R, K>): (arg: WithId<T>) => void {
+            emitEventOnSuccess,
+}: UseOptimisticUpdateArgs<T, R, E, K>): (arg: WithId<T>) => void {
     return useMutation({
         mutationFn: updateFn,
 
@@ -67,6 +73,15 @@ export default function useOptimisticUpdate<
             return {
                 previousItem,
                 previousItems,
+            }
+        },
+
+        onSuccess(serverItem) {
+            if (emitEventOnSuccess) {
+                eventBus.emit(
+                    emitEventOnSuccess,
+                    serverItem as AppEvents[typeof emitEventOnSuccess]
+                )
             }
         },
 
