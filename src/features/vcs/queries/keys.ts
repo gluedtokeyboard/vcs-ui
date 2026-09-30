@@ -11,3 +11,7 @@ export const statusKeys = {
 export const logKeys = {
     detail: (repoId: string) => [...repoKeys.detail(repoId), 'log'] as const,
 }
+
+export const branchKeys = {
+    all: (repoId: string) => [...repoKeys.detail(repoId), 'branches'] as const,
+}
