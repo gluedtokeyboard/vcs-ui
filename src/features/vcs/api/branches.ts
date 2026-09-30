@@ -10,3 +10,7 @@ export async function createBranch({ repoId, branchName }: { repoId: string, bra
     // @ts-expect-error
     return api.post<Branch>(branchEndpoint(repoId), { name: branchName })
 }
+
+export async function deleteBranch({ repoId, branchId }: { repoId: string, branchId: string }): Promise<void> {
+    await api.delete<Branch>(`${branchEndpoint(repoId)}/${branchId}`)
+}
