@@ -11,6 +11,7 @@ export const VcsEvent = {
     RESET: 'reset',
     CHECKOUT_FILE: 'checkout:file',
     BRANCH_CREATED: 'branch:created',
+    BRANCH_DELETED: 'branch:deleted',
 } as const
 
 export type VcsEvents = {
@@ -21,4 +22,5 @@ export type VcsEvents = {
     [VcsEvent.RESET]: void,
     [VcsEvent.CHECKOUT_FILE]: void,
     [VcsEvent.BRANCH_CREATED]: Branch,
+    [VcsEvent.BRANCH_DELETED]: void,
 }
