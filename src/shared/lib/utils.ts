@@ -16,3 +16,8 @@ export function joinPath(base: string, ...others: string[]): string {
     }
     return base
 }
+
+export const stringComparator = new Intl.Collator(undefined, {
+    numeric: true,
+    sensitivity: 'base',
+})

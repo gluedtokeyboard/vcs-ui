@@ -7,7 +7,7 @@ import styles from './Explorer.module.css'
 import { useFilesystemStore } from '../../stores/filesystemStore.ts'
 import * as React from 'react'
 import File from '../File/File.tsx'
-import { getBasename } from '../../../../shared/lib/utils.ts'
+import { getBasename, stringComparator } from '../../../../shared/lib/utils.ts'
 import useIsEditingFile from '../../hooks/useIsEditingFile.ts'
 import { eventBus } from '../../../../app/events'
 import { FilesystemEvent } from '../../events/eventTypes.ts'
@@ -86,15 +86,10 @@ function nodeTypeComparator(node1: Node, node2: Node): number {
     }
 }
 
-const collator = new Intl.Collator(undefined, {
-    numeric: true,
-    sensitivity: 'base',
-})
-
 function nodeNameComparator(node1: Node, node2: Node) {
     const basename1 = getBasename(node1.path)
     const basename2 = getBasename(node2.path)
-    return collator.compare(basename1, basename2)
+    return stringComparator.compare(basename1, basename2)
 }
 
 type Comparator<T> = (a: T, b: T) => number
