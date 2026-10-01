@@ -3,6 +3,7 @@ import ThemeProvider from '../../../../shared/providers/ThemeProvider.tsx'
 import LogButton from '../Log/LogButton/LogButton.tsx'
 import StatusPanel from '../Status/StatusPanel/StatusPanel.tsx'
 import StatusButton from '../Status/StatusButton/StatusButton.tsx'
+import BranchesButton from '../Branches/BranchesButton/BranchesButton.tsx'
 
 export default function VcsSidebar() {
     const theme = {
@@ -13,6 +14,7 @@ export default function VcsSidebar() {
         <Sidebar InitialPanel={StatusPanel}>
             <StatusButton />
             <LogButton />
+            <BranchesButton />
         </Sidebar>
     </ThemeProvider>
 }
