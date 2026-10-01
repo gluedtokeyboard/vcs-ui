@@ -9,6 +9,7 @@ const invalidateCwdEvents = [
     VcsEvent.STAGING_RM,
     VcsEvent.RESET,
     VcsEvent.CHECKOUT_FILE,
+    VcsEvent.CHECKOUT_BRANCH,
 ] as const
 
 type Payload = AppEvents[typeof invalidateCwdEvents[number]]
