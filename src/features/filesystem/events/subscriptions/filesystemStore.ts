@@ -7,6 +7,7 @@ const clearSelectedNodeEvents = [
     VcsEvent.STAGING_ADD,
     VcsEvent.STAGING_RM,
     VcsEvent.RESET,
+    VcsEvent.CHECKOUT_BRANCH,
 ] as const
 
 type Payload = AppEvents[typeof clearSelectedNodeEvents[number]]
