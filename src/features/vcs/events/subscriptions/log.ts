@@ -8,6 +8,7 @@ import type { Repo } from '../../types/repo.types'
 const invalidateLogEvents = [
     VcsEvent.COMMIT,
     VcsEvent.RESET,
+    VcsEvent.CHECKOUT_BRANCH,
 ] as const
 
 type Payload = AppEvents[typeof invalidateLogEvents[number]]
