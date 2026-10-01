@@ -7,6 +7,7 @@ import { fileKeys } from '../../queries/keys.ts'
 const invalidateFileEvents = [
     VcsEvent.RESET,
     VcsEvent.CHECKOUT_FILE,
+    VcsEvent.CHECKOUT_BRANCH,
 ] as const
 
 type Payload = AppEvents[typeof invalidateFileEvents[number]]
