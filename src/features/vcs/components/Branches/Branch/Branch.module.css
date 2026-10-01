@@ -1,0 +1,28 @@
+.branch {
+    --border: 1px solid #aaa;
+    border: var(--border);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.branchName {
+    padding: 0.6rem;
+}
+
+.currentBranchIndicator {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.buttons {
+    background-color: #eee;
+    border-top: var(--border);
+    padding: 0.2rem;
+    display: flex;
+}
+
+.buttons > * {
+    flex: 1;
+}
