@@ -6,6 +6,7 @@ import Rm from '../Rm/Rm.tsx'
 import Commit from '../Commit/Commit.tsx'
 import Reset from '../Reset/Reset.tsx'
 import CheckoutFile from '../CheckoutFile/CheckoutFile.tsx'
+import Merge from '../Merge/Merge.tsx'
 
 export default function VcsToolbar() {
     const theme = {
@@ -22,6 +23,7 @@ export default function VcsToolbar() {
             <Commit />
             <CheckoutFile />
             <Reset />
+            <Merge />
         </Toolbar>
     </ThemeProvider>
 }
