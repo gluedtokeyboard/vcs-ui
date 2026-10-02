@@ -18,3 +18,11 @@ export async function log({ repoId }: { repoId: string }): Promise<Commit[]> {
     // @ts-expect-error
     return api.get<Commit[]>(commitEndpoint(repoId))
 }
+
+export async function merge({ repoId, branchId }: { repoId: string, branchId: string }): Promise<Commit> {
+    // @ts-expect-error
+    return api.post<Commit>(commitEndpoint(repoId), {
+        type: CommitType.MERGE,
+        branchId,
+    })
+}
