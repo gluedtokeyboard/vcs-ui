@@ -9,6 +9,8 @@ const invalidateLogEvents = [
     VcsEvent.COMMIT,
     VcsEvent.RESET,
     VcsEvent.CHECKOUT_BRANCH,
+    VcsEvent.MERGE_SUCCESS,
+    VcsEvent.MERGE_FAILURE,
 ] as const
 
 type Payload = AppEvents[typeof invalidateLogEvents[number]]
