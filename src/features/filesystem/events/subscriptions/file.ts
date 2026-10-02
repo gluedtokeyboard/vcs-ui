@@ -8,6 +8,8 @@ const invalidateFileEvents = [
     VcsEvent.RESET,
     VcsEvent.CHECKOUT_FILE,
     VcsEvent.CHECKOUT_BRANCH,
+    VcsEvent.MERGE_SUCCESS,
+    VcsEvent.MERGE_FAILURE,
 ] as const
 
 type Payload = AppEvents[typeof invalidateFileEvents[number]]
