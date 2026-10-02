@@ -2,6 +2,7 @@ import type { Repo } from '../types/repo.types.ts'
 import type { StagingEntry } from '../types/staging.types.ts'
 import type { Commit } from '../types/commit.types.ts'
 import type { Branch } from '../types/branch.types.ts'
+import type { ErrorResponse } from '../../../shared/types/api.types.ts'
 
 export const VcsEvent = {
     REPO_INIT: 'repo:init',
@@ -13,6 +14,8 @@ export const VcsEvent = {
     BRANCH_CREATED: 'branch:created',
     BRANCH_DELETED: 'branch:deleted',
     CHECKOUT_BRANCH: 'checkout:branch',
+    MERGE_SUCCESS: 'merge:success',
+    MERGE_FAILURE: 'merge:failure',
 } as const
 
 export type VcsEvents = {
@@ -25,4 +28,6 @@ export type VcsEvents = {
     [VcsEvent.BRANCH_CREATED]: Branch,
     [VcsEvent.BRANCH_DELETED]: void,
     [VcsEvent.CHECKOUT_BRANCH]: void,
+    [VcsEvent.MERGE_SUCCESS]: Commit,
+    [VcsEvent.MERGE_FAILURE]: ErrorResponse,
 }
