@@ -8,6 +8,10 @@ import type { AppEvents } from '../../../../app/events/AppEvents.ts'
 const invalidateCurrentRepoEvents = [
     VcsEvent.REPO_INIT,
     FilesystemEvent.DIRECTORY_CHANGED,
+    FilesystemEvent.DIRECTORY_CUT,
+    FilesystemEvent.DIRECTORY_COPIED,
+    FilesystemEvent.DIRECTORY_DELETED,
+    FilesystemEvent.DIRECTORY_RENAMED,
 ] as const
 
 type Payload = AppEvents[typeof invalidateCurrentRepoEvents[number]]
