@@ -8,6 +8,7 @@ import FilesystemToolbar from '../../../filesystem/components/FilesystemToolbar/
 import StatusBar from '../../components/StatusBar/StatusBar.tsx'
 import VcsToolbar from '../../../vcs/components/VcsToolbar/VcsToolbar.tsx'
 import VcsSidebar from '../../../vcs/components/VcsSidebar/VcsSidebar.tsx'
+import NavigationToolbar from '../../components/NavigationToolbar/NavigationToolbar.tsx'
 
 export default function ExplorerPage() {
     const isEditingFile = useIsEditingFile()
@@ -30,8 +31,13 @@ export default function ExplorerPage() {
     }
 
     return <main className={ styles.explorerPage }>
-        <div className={styles.fsToolbar}>
-            <FilesystemToolbar />
+        <div className={styles.topRow}>
+            <div className={styles.navigationToolbar}>
+                <NavigationToolbar />
+            </div>
+            <div className={styles.fsToolbar}>
+                <FilesystemToolbar />
+            </div>
         </div>
         <div className={styles.vcsToolbar}>
             <VcsToolbar />

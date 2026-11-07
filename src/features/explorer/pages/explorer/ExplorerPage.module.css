@@ -5,8 +5,17 @@
     grid-template-columns: auto min(60vw, 28rem);
 }
 
-.fsToolbar {
+.topRow {
     grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+}
+
+.navigationToolbar {
+    display: contents;
+}
+
+.fsToolbar {
+    flex: 1;
 }
 
 .vcsToolbar {
