@@ -1,4 +1,5 @@
 import Toolbar from '../../../../shared/components/Toolbar/Toolbar.tsx'
+import Back from '../Back/Back.tsx'
 import ThemeProvider from '../../../../shared/providers/ThemeProvider.tsx'
 
 export default function NavigationToolbar() {
@@ -10,6 +11,7 @@ export default function NavigationToolbar() {
     }
     return <ThemeProvider value={theme}>
         <Toolbar>
+            <Back />
         </Toolbar>
     </ThemeProvider>
 }
